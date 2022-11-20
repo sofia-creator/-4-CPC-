@@ -161,9 +161,10 @@ Telegram надежнее скачать с официального сайта.
 
 ## Построен с помощью
 
-* [Волшебник падения](http://www.dropwizard.io/1.0.2/docs /) - Используемый веб-фреймворк
-* [Maven](https://maven.apache.org /) - Управление зависимостями
-* [РИМ](https://rometools.github.io/rome /) - Используется для создания RSS-каналов
+* [PyCharm](https://www.jetbrains.com/pycharm/) - Используемая среда разработки 
+* [Telegram Desktop](https://telegram.org/apps) - Платформа для существования бота
+* [SqliteStudio](https://sqlitestudio.pl/) - Среда работы с базами данных
+
 
 
 
