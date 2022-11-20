@@ -164,6 +164,7 @@ Telegram надежнее скачать с официального сайта.
 * [PyCharm](https://www.jetbrains.com/pycharm/) - Используемая среда разработки 
 * [Telegram Desktop](https://telegram.org/apps) - Платформа для существования бота
 * [SqliteStudio](https://sqlitestudio.pl/) - Среда работы с базами данных
+* [Aiogram](https://pypi.org/project/aiogram/) - Библиотека для написания бота
 
 
 
