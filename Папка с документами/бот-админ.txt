@@ -1,0 +1,43 @@
+from time import time
+import config
+from aiogram import types, executor, Dispatcher, Bot
+from filters import IsAdminFilter
+bot = Bot(token=config.token)
+dp = Dispatcher(bot)
+dp.filters_factory.bind(IsAdminFilter)
+
+
+@dp.message_handler(commands=["start", "help"], commands_prefix="!/")
+async def start(message: types.Message):
+    await message.answer("Привет!")
+@dp.message_handler(commands=["ban"], commands_prefix="!/")
+async def cmd_ban(message: types.Message):
+    if not message.reply_to_message:
+        await message.reply("Данная команда работает ответом на сообщение нарушителя")
+        return
+
+    await message.bot.delete_message(config.GROUP_ID, message.message_id)
+    await message.bot.kick_chat_member(chat_id = config.GROUP_ID, user_id=message.reply_to_message.from_user.id)
+
+    await message.reply_to_message.reply("Чтож, пользователь забанен.\nЭто печально(")
+
+
+@dp.message_handler()
+async def filter_messages(message: types.Message):
+    for entity in message.entities:
+        if entity.type in ["url", "text_link"]:
+            await message.delete()
+
+@dp.message_handler(content_types=["new_chat_members"])
+async def new_member(message: types.Message):
+    await message.answer("Добро пожаловать!")
+
+
+@dp.message_handler(content_types=["left_chat_member"])
+async def left_member(message: types.Message):
+    await message.delete()
+
+
+
+if __name__ == "__main__":
+    executor.start_polling(dp)
